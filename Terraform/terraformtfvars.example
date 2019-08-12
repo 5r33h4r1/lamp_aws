@@ -1,0 +1,10 @@
+# Rename This to terraform.tfvars and replace your own values"
+# *** VERY IMPORTANT Do NOT check terraform.tfvars file into your source code repository (ex: Github)
+
+prefix = "<Desired prefix for all resources>"
+
+vm_count = <"No of VMs needed"
+
+ec2_instance_type = "Desired size of the ec2 Instance ex: t2.micro, m4.large "
+
+key_pair = "Keypair created in your ec2 console"
