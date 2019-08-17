@@ -22,6 +22,7 @@ data "aws_ami" "ubuntu" {
 data "aws_availability_zones" "all" {}
 
 resource "aws_ebs_volume" "ebs" {
+  count = "${var.vm_count}"
   availability_zone = "us-west-2a"
   size              = 40
 
@@ -32,21 +33,23 @@ resource "aws_ebs_volume" "ebs" {
 
 
 resource "aws_volume_attachment" "ebs_att" {
+  count = "${var.vm_count}"
   device_name = "/dev/sdh"
-  volume_id   = "${aws_ebs_volume.ebs.id}"
-  instance_id = "${aws_instance.web.id}"
+  volume_id   = "${element(aws_ebs_volume.ebs.*.id, count.index)}"
+  instance_id = "${element(aws_instance.web.*.id, count.index)}"
 }
 
 
 resource "aws_instance" "web" {
-  count                  = "${var.vm_count}"
-  ami                    = "${data.aws_ami.ubuntu.id}"
-  instance_type          = "${var.ec2_instance_type}"
-  key_name               = "${var.key_pair}"
-  user_data              = "${data.template_file.setup.rendered}"
-  security_groups =    ["${aws_security_group.web-sg.name}"]
+  count           = "${var.vm_count}"
+  ami             = "${data.aws_ami.ubuntu.id}"
+  instance_type   = "${var.ec2_instance_type}"
+  subnet_id = "${aws_subnet.web.id}"
+  vpc_security_group_ids = ["${aws_security_group.web-sg.id}"]
+  key_name        = "${var.key_pair}"
+  user_data       = "${data.template_file.setup.rendered}"
 
-  tags {
+  tags = {
     Name = "${var.prefix}-web-${count.index}"
   }
 }
