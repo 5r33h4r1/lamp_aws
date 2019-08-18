@@ -1,5 +1,6 @@
 resource "aws_security_group" "web-sg" {
-  name = "web"
+  name   = "web"
+  vpc_id = "${aws_vpc.myproject_vpc.id}"
   tags = {
     Name = "FrontEnd"
   }

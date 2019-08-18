@@ -34,12 +34,12 @@ variable "key_pair" {
 
 variable "vpc-fullcidr" {
   description = "CIDR block for the VPN"
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 
 variable "Subnet-web-CIDR" {
 
   description = "CIDR block for web Subnet"
-  default = "10.0.1.0/24"
+  default     = "10.0.1.0/24"
 }
