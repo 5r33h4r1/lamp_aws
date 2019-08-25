@@ -27,6 +27,14 @@ variable "ec2_instance_type" {
 
 }
 
+variable "backend_bucket" {
+  description = "Bucket to store remote state"
+  default     = "tf-ranbaddi-be"
+
+}
+
+
+
 variable "key_pair" {
   description = "Keypair created in ec2. Should have with you to access ec2"
 
