@@ -1,8 +1,7 @@
 # Instructions
 
+## The Terraform config files in remotestate folder create a S3 bucket and a DynamoDB table for state and state lock
 
-- use tf files in remotestate folder to create s3 bucket and dynamodb for state locking
-export
-- Sed to replace values in remotestate file in  Terraform-main folder
+##  Sed to replace values in remotestate file in  Terraform-main folder
 
-    sed -i 's/'
+## Terraform config files in Terraform-main create instances, vpc and attach disks

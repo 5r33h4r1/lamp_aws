@@ -3,6 +3,6 @@ terraform {
     bucket = "baddilab"
     key    = "baddilab/tfremote.tfstate"
     region = "us-west-2"
-    dynamodb_table = ""
+    dynamodb_table = "baddilab"
   }
 }
