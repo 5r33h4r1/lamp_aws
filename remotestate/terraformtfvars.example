@@ -1,0 +1,6 @@
+# Rename This to terraform.tfvars and replace your own values"
+# *** VERY IMPORTANT Do NOT check terraform.tfvars file into your source code repository (ex: Github)
+
+prefix = "<Desired prefix for all resources>"
+
+region = "us-west-2"
