@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo "Building main infra"
+echo "Updating infra"
 
 
 
